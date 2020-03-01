@@ -44,7 +44,7 @@
                 <!--<th>过期时间</th>-->
                 <th>订单总价</th>
                 <th>应收款</th>
-                <th>来源</th>
+                <!-- <th>来源</th> -->
                 <th>{:lang('STATUS')}</th>
                 <th align="center">{:lang('ACTIONS')}</th>
             </tr>
@@ -106,18 +106,18 @@
                     -->
                     <td>￥{$vo.total_amount}</td>
                     <td>￥{$vo.order_amount}</td>
-                    <td>
+                    <!-- <td>
                         <empty name="vo.source">
                             官网
                             <else/>
                             {$vo.source}
                         </empty>
-                    </td>
+                    </td> -->
                     <td>
-                        {$user_confirmed[$vo['user_confirmed']]}<br>
-                        {$pay_status[$vo['pay_status']]}<br>
-                        {$shipping_status[$vo['shipping_status']]}<br>
-                        {$order_status[$vo['order_status']]}
+                        {$user_confirmed[$vo['user_confirmed']]}
+                        /{$pay_status[$vo['pay_status']]}
+                        /{$shipping_status[$vo['shipping_status']]}
+                        /{$order_status[$vo['order_status']]}
                     </td>
                     <td>
                         <!--<a href="{:url('AdminOrder/sendConfirmEmail')}?order_id={$vo.id}" class="js-ajax-dialog-btn"-->
@@ -150,7 +150,7 @@
                 <!--<th>过期时间</th>-->
                 <th>订单总价</th>
                 <th>应收款</th>
-                <th>来源</th>
+                <!-- <th>来源</th> -->
                 <th>{:lang('STATUS')}</th>
                 <th align="center">{:lang('ACTIONS')}</th>
             </tr>

@@ -8,23 +8,34 @@
 </head>
 <body>
 <div class="wrap">
-    <table class="table" style="margin-bottom: 0;">
-        <tr>
-            <th colspan="5" style="text-align: center;border-top: none;">
+    <div class="text-center">
                 <h2>出库单</h2>
-            </th>
+            </div>
+    <table class="table table-bordered">
+        <tr>
+            <th colspan="5" style="text-align: center;background:#f3f3f3">基本信息</th>
         </tr>
         <tr>
             <th width="90">
                 订单编号:
             </th>
-            <td colspan="3">{$order.order_sn}</td>
+            <td>{$order.order_sn}</td>
+            <th width="90">
+                下单时间:
+            </th>
+            <td>{:date('Y-m-d H:i',$order['create_time'])}</td>
         </tr>
         <tr>
             <th width="90">
                 出库时间:
             </th>
-            <td colspan="3">{:date('Y-m-d H:i:s')}</td>
+            <td>
+                <if condition="$order['deliver_time']==0">
+                    {:date('Y-m-d H:i')}
+                <else />
+                    {:date('Y-m-d H:i',$order['deliver_time'])}
+                </if>
+            </td>
         </tr>
         <tr>
             <th width="90">
@@ -48,6 +59,11 @@
                 </form>
             </td>
         </tr>
+    </table>
+    <table class="table table-bordered">
+        <tr>
+            <th colspan="5" style="text-align: center;background:#f3f3f3">客户信息</th>
+        </tr>
         <tr>
             <th width="90">
                 收件人:
@@ -69,7 +85,7 @@
     </table>
     <table class="table table-bordered">
         <tr>
-            <th colspan="5" style="text-align: center;">商品列表</th>
+            <th colspan="5" style="text-align: center;background:#f3f3f3">商品列表</th>
         </tr>
         <tr>
             <th>商品</th>

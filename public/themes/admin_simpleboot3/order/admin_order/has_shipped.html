@@ -34,14 +34,14 @@
                 </th>
                 <th>订单号</th>
                 <th>收货人</th>
-                <th>单位</th>
+                <!-- <th>单位</th> -->
                 <!-- <th>收件人</th>
                 <th>物流名称</th> -->
                 <!--<th>支付方式</th>-->
-                <th>发货时间</th>
+                <th>出库时间</th>
                 <!--<th>过期时间</th>-->
                 <th>物流公司</th>
-                <th>单号</th>
+                <th>快递单号</th>
                 <th>{:lang('STATUS')}</th>
                 <th align="center">{:lang('ACTIONS')}</th>
             </tr>
@@ -64,19 +64,19 @@
                         {$vo.mobile}<br>
                         {$vo.mobile2}
                     </td>
-                    <td>
+                    <!-- <td>
                         {$customers[$vo['user_id']]['company']|default=''}
-                    </td>
+                    </td> -->
                     <!-- <td>{$vo.consignee}</td>
                     <td>{$vo.shipment_name}</td> -->
-                    <td>{:date('Y-m-d H:i',$vo['create_time'])}</td>
+                    <td>{:date('Y-m-d H:i',$vo['deliver_time'])}</td>
                     <td>{$vo.shipment_name}</td>
-                    <td>{$vo.shipment_code}</td>
+                    <td>{$vo.tracking_number}</td>
                     <td>
-                        {$user_confirmed[$vo['user_confirmed']]}<br>
-                        {$pay_status[$vo['pay_status']]}<br>
-                        {$shipping_status[$vo['shipping_status']]}<br>
-                        {$order_status[$vo['order_status']]}
+                        {$user_confirmed[$vo['user_confirmed']]}
+                        /{$pay_status[$vo['pay_status']]}
+                        /{$shipping_status[$vo['shipping_status']]}
+                        /{$order_status[$vo['order_status']]}
                     </td>
                     <td>
                         <!--<a href="{:url('AdminOrder/detail',array('id'=>$vo['id']))}">详情</a>-->
@@ -96,14 +96,14 @@
                 </th>
                 <th>订单号</th>
                 <th>客户</th>
-                <th>单位</th>
+                <!-- <th>单位</th> -->
                 <!-- <th>收件人</th>
                 <th>物流名称</th> -->
                 <!--<th>支付方式</th>-->
-                <th>下单时间</th>
+                <th>出库时间</th>
                 <!--<th>过期时间</th>-->
                 <th>订单总价</th>
-                <th>应收款</th>
+                <th>快递单号</th>
                 <th>{:lang('STATUS')}</th>
                 <th align="center">{:lang('ACTIONS')}</th>
             </tr>
@@ -119,7 +119,7 @@
         var id    = $obj.data('id');
         var title = $obj.data('title');
         parent.openIframeLayer("{:url('AdminOrder/deliver')}?id=" + id, '修改物流信息', {
-            area: ['95%', '90%'],
+            area: ['70%', '90%'],
             btn: ['确定', '取消'],
             yes: function (index, layero) {
                 console.log(layero);
